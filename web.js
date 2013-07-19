@@ -2,10 +2,11 @@ var express = require('express');
 var fs=require('fs');
 
 var app = express.createServer(express.logger());
-var ifile=fs.readFileSync('index.html').toString();
 
 app.get('/', function(request, response) {
-  response.send(ifile);
+   var data= fs.readFileSync('bitstarter-hw4.html');
+   var buf= new Buffer(data,'utf-8');
+   response.send(buf.toString());
 });
 
 var port = process.env.PORT || 8080;
